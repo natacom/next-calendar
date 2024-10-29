@@ -2,7 +2,7 @@ import React, { NamedExoticComponent } from 'react';
 import styles from './calendar.module.css'
 
 const DoWShortNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-const defColours = ['#fde','#fff','#fff','#fff','#fff','#fff','#dff']
+const defColours = ['#fde', '#fff', '#fff', '#fff', '#fff', '#fff', '#dff']
 
 function getDaysInMonth(year: number, month: number): number {
   return new Date(year, month, 0).getDate();
@@ -18,12 +18,12 @@ function toYYYYMMDD(dt: Date) {
 
 type CalendarType = {
   year: number,
-  month: 1|2|3|4|5|6|7|8|9|10|11|12,
-  startDoWIndex?: 0|1|2|3|4|5|6,
-  DoWColors?: [string,string,string,string,string,string,string],
-  contents?: {[YYYYMMDD:string]: React.ReactNode},
+  month: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12,
+  startDoWIndex?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+  DoWColors?: [string, string, string, string, string, string, string],
+  contents?: { [YYYYMMDD: string]: React.ReactNode },
   className?: string,
-  style?: {[key:string]:string},
+  style?: { [key: string]: string },
 }
 export default function Calendar(params: CalendarType) {
   const {
@@ -35,7 +35,8 @@ export default function Calendar(params: CalendarType) {
     className = "",
     style = {}
   } = params
-  function getDates(year: number, month: number) {
+
+  function getDates() {
     let diffDoW = getFirstDayOfWeek(year, month) - startDoWIndex
     if (diffDoW < 0) {
       diffDoW += 7
@@ -68,20 +69,17 @@ export default function Calendar(params: CalendarType) {
       <tr>
         {
           Array.from(
-            { length: 7},
+            { length: 7 },
             (_, i) => (i + startDoWIndex) % 7
           ).map(DoWIndex =>
-            <th
-              key={DoWIndex}
-              // style={{ backgroundColor: DoWColors[DoWIndex] }}
-            >
+            <th key={DoWIndex}>
               {DoWShortNames[DoWIndex]}
             </th>
           )
         }
       </tr>
       {
-        getDates(year, month).map((week) =>
+        getDates().map((week) =>
           <tr key={week[0].toISOString()}>
             {
               week.map(date =>
@@ -92,10 +90,10 @@ export default function Calendar(params: CalendarType) {
                 >
                   <div>
                     <div className={styles.date}>
-                      { date.getDate() }
+                      {date.getDate()}
                     </div>
                     <div className={styles.contents}>
-                      { contents[toYYYYMMDD(date)] }
+                      {contents[toYYYYMMDD(date)]}
                     </div>
                   </div>
                 </td>
