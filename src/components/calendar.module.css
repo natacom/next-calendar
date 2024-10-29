@@ -1,3 +1,44 @@
-.test {
-  background: cyan;
+.table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.table td, .table th {
+  font-weight: normal;
+  height: 1.5rem;
+  padding: 0;
+  border: 1px solid gray;
+}
+
+.table th {
+  color: #fcfcfc;
+  background-color: #444;
+}
+
+.table td.in {
+  color: black;
+}
+.table td.out{
+  color: #aaa;
+}
+
+.table td > div {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.table td .date {
+  font-size: 0.8rem;
+  width: 1.2rem;
+  padding-left: 0.2rem;
+}
+
+.table td .contents {
+  padding: 0.8rem 0 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
 }
