@@ -6,6 +6,11 @@
   font-weight: bold;
 }
 
+.testTableClass th:nth-of-type(odd) {
+  background-color: white;
+  color: green;
+}
+
 .testCellClass1 {
   background-color: red;
 }
