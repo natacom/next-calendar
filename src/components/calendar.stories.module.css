@@ -1,0 +1,11 @@
+.testTableClass {
+  font-size: 0.8rem;
+}
+
+.testTableClass th {
+  font-weight: bold;
+}
+
+.testCellClass1 {
+  background-color: red;
+}

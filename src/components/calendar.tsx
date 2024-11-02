@@ -1,4 +1,4 @@
-import React, { NamedExoticComponent } from 'react';
+import React from 'react';
 import styles from './calendar.module.css'
 
 const DoWShortNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
@@ -22,8 +22,10 @@ type CalendarType = {
   startDoWIndex?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
   DoWColors?: [string, string, string, string, string, string, string],
   contents?: { [YYYYMMDD: string]: React.ReactNode },
-  className?: string,
-  style?: { [key: string]: string },
+  tableClassName?: string,
+  tableStyle?: React.CSSProperties,
+  cellClassNames?: { [YYYYMMDD: string]: string },
+  cellStyles?: { [YYYYMMDD: string]: React.CSSProperties },
 }
 export default function Calendar(params: CalendarType) {
   const {
@@ -32,8 +34,10 @@ export default function Calendar(params: CalendarType) {
     startDoWIndex = 0,
     DoWColors = defColours,
     contents = {},
-    className = "",
-    style = {}
+    tableClassName = "",
+    tableStyle = {},
+    cellClassNames = {},
+    cellStyles = {},
   } = params
 
   function getDates() {
@@ -65,7 +69,7 @@ export default function Calendar(params: CalendarType) {
   }
 
   return (
-    <table className={`${styles.table} ${className}`} style={style}><tbody>
+    <table className={`${styles.table} ${tableClassName}`} style={tableStyle}><tbody>
       <tr>
         {
           Array.from(
@@ -88,7 +92,10 @@ export default function Calendar(params: CalendarType) {
                   className={isTargetMonth(date) ? styles.in : styles.out}
                   style={{ backgroundColor: DoWColors[date.getDay()] }}
                 >
-                  <div>
+                  <div
+                    className={cellClassNames[toYYYYMMDD(date)]}
+                    style={cellStyles[toYYYYMMDD(date)]}
+                  >
                     <div className={styles.date}>
                       {date.getDate()}
                     </div>
