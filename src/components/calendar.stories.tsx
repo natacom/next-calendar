@@ -31,17 +31,20 @@ export const Styles: Story = {
     year: 2024,
     contents: {
       '20240118': 'test',
+      '20240130': 'TEST',
     },
-    tableClassName: styles.testTableClass,
     tableStyle: {
-      boxShadow: "0 2px 4px #6663",
-    },
-    cellClassNames: {
-      '20240102': styles.testCellClass1,
+      boxShadow: "0 5px 10px #666",
     },
     cellStyles: {
       '20240118': { background: 'cyan', color: 'purple' },
+      '20240120': { backgroundColor: 'yellow' },
       '20240130': { textShadow: '0 2px 3px #050', fontWeight: 'bold' },
+    },
+    dateStyles: {
+      '20240118': { background: 'darkred', color: 'white' },
+      '20240105': { textDecoration: 'underline', textDecorationThickness: '2px', textDecorationStyle: 'double' },
+      '20240103': { textShadow: '0 2px 3px #500', fontWeight: 'bold' },
     }
   }
 }

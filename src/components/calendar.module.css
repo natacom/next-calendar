@@ -1,43 +1,40 @@
-.table {
-  border-collapse: collapse;
-  table-layout: fixed;
-  width: 100%;
+.container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
 }
-
-.table td, .table th {
-  font-weight: normal;
-  height: 1.5rem;
-  padding: 0;
-  border: 1px solid gray;
-}
-
-.table th {
+.container > .header {
   color: #fcfcfc;
   background-color: #444;
 }
-
-.table td.in {
-  color: black;
-}
-.table td.out{
-  color: #aaa;
-}
-
-.table td > div {
+.container > div {
+  position: relative;
   display: flex;
+  min-width: 1.5rem;
+  min-height: 1.5rem;
   width: 100%;
   height: 100%;
-  box-sizing: border-box;
+  box-sizing: content-box;
+  border: 1px solid gray;
+  padding: 0 -1px -1px 0;
 }
-
-.table td .date {
+.in {
+  color: black;
+}
+.out{
+  color: #aaa;
+}
+.date {
+  position: absolute;
+  top: 0;
+  left: 0;
   font-size: 0.8rem;
   width: 1.2rem;
   padding-left: 0.2rem;
 }
-
-.table td .contents {
-  padding: 0.8rem 0 0;
+.contents {
+  width: 100%;
+  height: 100%;
+  padding: 1rem 0.5rem 0;
   overflow-wrap: break-word;
   word-break: break-word;
   white-space: normal;
